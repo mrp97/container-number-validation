@@ -1,16 +1,10 @@
-# Level Up Tutorials JavaScript Testing 101
+# Container Number Validation
 
-## Help Support
+Container number validation algorithm: [What is a container prefix](https://www.csiu.co/container-prefixes)
 
-https://www.leveluptutorials.com/store
-
-## How To Use
+## Usage
+```
+npm i container-number-validation
 
 ```
-git clone https://github.com/stolinski/Level-Up-JavaScript-Testing-101.git
-cd Level-Up-JavaScript-Testing-101
-npm install
-npm test
-```
-
-Then follow along on Youtube
+Tests written with jest
