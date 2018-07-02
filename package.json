@@ -1,14 +1,24 @@
 {
   "name": "container-number-validation ",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "A simple package for check container number validation",
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll"
   },
-  "keywords": ["validation"],
-  "author": "",
+  "keywords": [
+    "validation"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrp97/container-number-validation.git"
+  },
+  "author": "mrp97",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrp97/container-number-validation/issues"
+  },
+  "homepage": "https://github.com/mrp97/container-number-validation",
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
     "jest": "^22.4.3"
