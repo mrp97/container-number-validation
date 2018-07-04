@@ -1,6 +1,6 @@
 {
   "name": "container-number-validation ",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A simple package for check container number validation",
   "main": "index.js",
   "scripts": {
