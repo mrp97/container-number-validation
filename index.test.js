@@ -1,5 +1,4 @@
 import {
-    hello,
     error,
     isValid,
     splitContainerNumber,
@@ -8,13 +7,15 @@ import {
     getNumericalValues,
     calculateCheckDigit,
     validation
-} from './App';
+} from './index';
 
 describe('isValid', () => {
   it('Shoud match container number pattern', () => {
     expect(isValid('')).toBe(false);
     expect(isValid('dfsj7122007')).toBe(false);
     expect(isValid('dfsu7122007')).toBe(true);
+    expect(isValid('cmau0902910')).toBe(true);
+
   });
 });
 
@@ -27,11 +28,20 @@ describe('splitContainerNumber', () => {
       registration: '716200',
       checkDigit: '7'
     });
+
+    expect(splitContainerNumber('cmau0902910')).toEqual({
+      ownerCode: 'cma',
+      productGroupCode: 'u',
+      registration: '090291',
+      checkDigit: '0'
+    });
+
+
   });
 });
 
 test('getCheckDigit', () => {
-  expect(getCheckDigit('dfsu7162007')).toBe(7);
+  expect(getCheckDigit('cmau0902910')).toBe(0);
 });
 
 test('getContainerNumberWithoutCheckDigit', ()=>{
@@ -44,10 +54,11 @@ test('getNumericalValues', ()=>{
 
 test('calculateCheckDigit', () => {
   expect(calculateCheckDigit('dfsu7162007')).toBe(7);
+  expect(calculateCheckDigit('cmau0902910')).toBe(0);
 });
 
 test('validation', () => {
   expect(validation('dfsu7162007').valid).toBe(true);
   expect(validation('dfsu7162008').valid).toBe(false);
-
+  expect(validation('cmau0902910').valid).toBe(true);
 });

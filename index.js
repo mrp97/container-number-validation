@@ -71,7 +71,7 @@ export const calculateCheckDigit = (containerNumber) => {
   const numericalValuesSum = numericalValues.reduce((total,currentValue,currentIndex) => {
     return total + (currentValue * Math.pow(2,currentIndex));
   }, 0);
-  return ( numericalValuesSum % 11 )
+  return ( numericalValuesSum % 11 % 10);
 }
 
 export const validation = (containerNumber) => {
