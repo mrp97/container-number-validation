@@ -55,6 +55,11 @@ test('getNumericalValues', ()=>{
 test('calculateCheckDigit', () => {
   expect(calculateCheckDigit('dfsu7162007')).toBe(7);
   expect(calculateCheckDigit('cmau0902910')).toBe(0);
+  expect(calculateCheckDigit('cmau090291')).toBe(0);
+  expect(calculateCheckDigit('dfsu716200')).toBe(7);
+
+
+
 });
 
 test('validation', () => {

@@ -12,6 +12,10 @@ const isValid = (containerNumber) => {
 };
 
 const splitContainerNumber = (containerNumber) => {
+  if(containerNumber.length == 10){
+    containerNumber = containerNumber + '1';
+  }
+
   if(!isValid(containerNumber)){
     return error('invalidContainerNumber');
   } else {
