@@ -1,4 +1,4 @@
-export const error = (error, arg) => {
+const error = (error, arg) => {
   const messages = {
     invalidContainerNumber: 'Container number is invalid, example: dfsu7162007',
     incorrectCheckDigit: `Check Digit must be ${arg}`
@@ -6,12 +6,12 @@ export const error = (error, arg) => {
   return messages[error];
 }
 
-export const isValid = (containerNumber) => {
+const isValid = (containerNumber) => {
   const pattern = /^[a-zA-Z]{3}[uU]{1}[0-9]{7}$/;
   return pattern.test(containerNumber);
 };
 
-export const splitContainerNumber = (containerNumber) => {
+const splitContainerNumber = (containerNumber) => {
   if(!isValid(containerNumber)){
     return error('invalidContainerNumber');
   } else {
@@ -29,11 +29,11 @@ export const splitContainerNumber = (containerNumber) => {
   }
 }
 
-export const getCheckDigit = (containerNumber) => {
+const getCheckDigit = (containerNumber) => {
   return parseInt(splitContainerNumber(containerNumber).checkDigit);
 }
 
-export const getContainerNumberWithoutCheckDigit = (containerNumber) => {
+const getContainerNumberWithoutCheckDigit = (containerNumber) => {
   if(!isValid(containerNumber)) {
     return error('invalidContainerNumber');
   } else {
@@ -41,7 +41,7 @@ export const getContainerNumberWithoutCheckDigit = (containerNumber) => {
   }
 }
 
-export const getNumericalValues = (containerNumber) => {
+const getNumericalValues = (containerNumber) => {
   const alphabetNumerical = {
       'A' : 10, 'B' : 12, 'C' : 13, 'D' : 14, 'E' : 15,
       'F' : 16, 'G' : 17, 'H' : 18, 'I' : 19, 'J' : 20,
@@ -66,7 +66,7 @@ export const getNumericalValues = (containerNumber) => {
   )
 }
 
-export const calculateCheckDigit = (containerNumber) => {
+const calculateCheckDigit = (containerNumber) => {
   const numericalValues = getNumericalValues(containerNumber);
   const numericalValuesSum = numericalValues.reduce((total,currentValue,currentIndex) => {
     return total + (currentValue * Math.pow(2,currentIndex));
@@ -74,7 +74,7 @@ export const calculateCheckDigit = (containerNumber) => {
   return ( numericalValuesSum % 11 % 10);
 }
 
-export const validation = (containerNumber) => {
+const validation = (containerNumber) => {
   if(!isValid(containerNumber)){
     return { valid : false, error: error('invalidContainerNumber') };
   } else {
@@ -87,4 +87,15 @@ export const validation = (containerNumber) => {
     }
   }
 
+}
+
+module.exports = {
+  error: error,
+  isValid: isValid,
+  splitContainerNumber: splitContainerNumber,
+  getCheckDigit: getCheckDigit,
+  getContainerNumberWithoutCheckDigit: getContainerNumberWithoutCheckDigit,
+  getNumericalValues: getNumericalValues,
+  calculateCheckDigit: calculateCheckDigit,
+  validation: validation,
 }
