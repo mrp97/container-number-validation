@@ -50,6 +50,7 @@ test('getContainerNumberWithoutCheckDigit', ()=>{
 
 test('getNumericalValues', ()=>{
   expect(getNumericalValues('dfsu7162007')).toEqual([14,16,30,32,7,1,6,2,0,0]);
+  expect(getNumericalValues('dfsu716200')).toEqual([14,16,30,32,7,1,6,2,0,0]);
 });
 
 test('calculateCheckDigit', () => {

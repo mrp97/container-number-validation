@@ -13,9 +13,9 @@ const isValid = (containerNumber) => {
 
 const splitContainerNumber = (containerNumber) => {
   if(containerNumber.length == 10){
-    containerNumber = containerNumber + '1';
+    containerNumber = containerNumber + '0';
   }
-
+  
   if(!isValid(containerNumber)){
     return error('invalidContainerNumber');
   } else {
@@ -46,6 +46,11 @@ const getContainerNumberWithoutCheckDigit = (containerNumber) => {
 }
 
 const getNumericalValues = (containerNumber) => {
+
+  if(containerNumber.length == 10){
+    containerNumber = containerNumber + '0';
+  }
+
   const alphabetNumerical = {
       'A' : 10, 'B' : 12, 'C' : 13, 'D' : 14, 'E' : 15,
       'F' : 16, 'G' : 17, 'H' : 18, 'I' : 19, 'J' : 20,
@@ -71,6 +76,9 @@ const getNumericalValues = (containerNumber) => {
 }
 
 const calculateCheckDigit = (containerNumber) => {
+  if(containerNumber.length == 10){
+    containerNumber = containerNumber + '1';
+  }
   const numericalValues = getNumericalValues(containerNumber);
   const numericalValuesSum = numericalValues.reduce((total,currentValue,currentIndex) => {
     return total + (currentValue * Math.pow(2,currentIndex));
